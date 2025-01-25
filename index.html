@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ananya Ji 😘</title>
+    <style>
+        body {
+            background-color: #ffc0cb; /* Light Pink */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            color: red;
+            font-size: 2.5em;
+            margin-top: 40px;
+        }
+        p {
+            font-size: 1.1em;
+            color: #ff3366;
+            padding: 0 15px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .hearts {
+            position: absolute;
+            bottom: -50px;
+            font-size: 24px;
+            color: red;
+            animation: floatUp 5s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        #gameBtn {
+            margin-top: 30px;
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        #gameContainer {
+            display: none;
+            margin-top: 20px;
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+        #clickBtn {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            position: absolute;
+        }
+        #message {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ff0033;
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Birthday Ananya Ji 😘</h1>
+    
+    <p>
+        My love, today is your special day, and I can't be there to whisper in your ears how much I adore you.  
+        But if I could, I'd hold you tight, trace my fingers through your hair, and tell you how **incredibly irresistible** you are.  
+        Your beauty, your kindness, and your stubborn little tantrums – I crave them all.  
+        You are not just my girlfriend, you are my **fantasy turned into reality.**  
+        If I were there, I’d kiss you in places that would make you blush for hours.  
+        So, for now, let my words do what my lips can’t – **drive you crazy, my love.**  
+        Happy Birthday, my gorgeous queen! 💕🔥
+    </p>
+    
+    <button id="gameBtn">Play a Game 🎮</button>
+
+    <div id="gameContainer">
+        <button id="clickBtn">Catch Me!</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // Floating Hearts
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("hearts");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+            const randomLeft = Math.random() * window.innerWidth;
+            heart.style.left = randomLeft + "px";
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+
+        // Game Logic
+        let clickCount = 0;
+        const gameBtn = document.getElementById("gameBtn");
+        const gameContainer = document.getElementById("gameContainer");
+        const clickBtn = document.getElementById("clickBtn");
+        const message = document.getElementById("message");
+
+        gameBtn.addEventListener("click", () => {
+            gameBtn.style.display = "none";
+            gameContainer.style.display = "block";
+            moveButton(); // Ensure it starts within the screen
+        });
+
+        function moveButton() {
+            const maxWidth = window.innerWidth - 100; // Prevents button from going off-screen
+            const maxHeight = 300; // Keeps button within the visible game area
+
+            const newX = Math.random() * maxWidth;
+            const newY = Math.random() * maxHeight;
+
+            clickBtn.style.left = newX + "px";
+            clickBtn.style.top = newY + "px";
+        }
+
+        clickBtn.addEventListener("click", () => {
+            clickCount++;
+
+            if (clickCount >= 5) {
+                clickBtn.style.display = "none"; // Hide button after 5 clicks
+                message.innerHTML = "You're really the best, my love! Even after our silly fights, you've never left me. 💕 <br> You’re the only one who understands me, the one I ever dreamt of, my precious madam ji. 🥰 <br> Every moment with you is pure magic. I wish I was there to hold you right now! ❤️";
+                message.style.display = "block"; // Show message and KEEP IT VISIBLE
+            } else {
+                moveButton();
+            }
+        });
+    </script>
+
+</body>
+</html>
+
