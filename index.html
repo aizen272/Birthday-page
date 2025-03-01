@@ -4,32 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Ananya Ji 😘</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #ffc0cb; /* Light Pink */
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff99cc, #ff3366);
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             overflow: hidden;
             position: relative;
+            color: white;
         }
         h1 {
-            color: red;
-            font-size: 2.5em;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
             margin-top: 40px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.7);
         }
         p {
-            font-size: 1.1em;
-            color: #ff3366;
+            font-size: 1.2em;
             padding: 0 15px;
             max-width: 600px;
             margin: auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .hearts {
             position: absolute;
             bottom: -50px;
             font-size: 24px;
             color: red;
-            animation: floatUp 5s linear infinite;
+            animation: floatUp 6s linear infinite;
         }
         @keyframes floatUp {
             0% { transform: translateY(0); opacity: 1; }
@@ -39,11 +46,17 @@
             margin-top: 30px;
             padding: 12px 24px;
             font-size: 18px;
-            background-color: red;
-            color: white;
+            background: white;
+            color: #ff0033;
             border: none;
             cursor: pointer;
             border-radius: 10px;
+            transition: 0.3s;
+        }
+        #gameBtn:hover {
+            background: #ff0033;
+            color: white;
+            transform: scale(1.1);
         }
         #gameContainer {
             display: none;
@@ -55,40 +68,56 @@
         #clickBtn {
             padding: 12px 24px;
             font-size: 16px;
-            background-color: #ff3366;
-            color: white;
+            background: white;
+            color: #ff3366;
             border: none;
             cursor: pointer;
             border-radius: 8px;
             position: absolute;
+            transition: 0.2s;
+        }
+        #clickBtn:hover {
+            transform: scale(1.1);
         }
         #message {
             font-size: 1.2em;
             font-weight: bold;
-            color: #ff0033;
-            display: none; /* Initially hidden */
+            display: none;
             margin-top: 20px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.7);
+        }
+        /* Floating Hearts */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="https://dl.sndup.net/6m9h/blue.mp3" type="audio/mp3">
+    </audio>
+
     <h1>Happy Birthday Ananya Ji 😘</h1>
     
     <p>
-        My love, today is your special day, and I can't be there to whisper in your ears how much I adore you.  
-        But if I could, I'd hold you tight, trace my fingers through your hair, and tell you how **incredibly irresistible** you are.  
-        Your beauty, your kindness, and your stubborn little tantrums – I crave them all.  
-        You are not just my girlfriend, you are my **fantasy turned into reality.**  
-        If I were there, I’d kiss you in places that would make you blush for hours.  
-        So, for now, let my words do what my lips can’t – **drive you crazy, my love.**  
-        Happy Birthday, my gorgeous queen! 💕🔥
+        My love, today is your day, and I wish I could whisper every sweet thing I feel about you in your ears.  
+        If I were there, I'd wrap my arms around you, run my fingers through your hair, and remind you  
+        that **you are the most irresistible, most mesmerizing girl in the universe**.  
+        Your stubbornness, your laugh, your every little habit – they drive me crazy in the best way.  
+        You are my fantasy turned reality, my brightest light in the darkest nights.  
+        I’d kiss you in places that would leave you blushing for hours.  
+        So let these words touch you the way my lips wish they could…  
+        **Happy Birthday, my gorgeous queen! 💕🔥**
     </p>
     
     <button id="gameBtn">Play a Game 🎮</button>
 
     <div id="gameContainer">
-        <button id="clickBtn">Catch Me!</button>
+        <button id="clickBtn">Catch Me! 💖</button>
         <p id="message"></p>
     </div>
 
@@ -115,27 +144,27 @@
         gameBtn.addEventListener("click", () => {
             gameBtn.style.display = "none";
             gameContainer.style.display = "block";
-            moveButton(); // Ensure it starts within the screen
+            moveButton();
         });
 
         function moveButton() {
-            const maxWidth = window.innerWidth - 100; // Prevents button from going off-screen
-            const maxHeight = 300; // Keeps button within the visible game area
-
+            const maxWidth = window.innerWidth - 100;
+            const maxHeight = 300;
             const newX = Math.random() * maxWidth;
             const newY = Math.random() * maxHeight;
-
             clickBtn.style.left = newX + "px";
             clickBtn.style.top = newY + "px";
         }
 
         clickBtn.addEventListener("click", () => {
             clickCount++;
-
             if (clickCount >= 5) {
-                clickBtn.style.display = "none"; // Hide button after 5 clicks
-                message.innerHTML = "You're really the best, my love! Even after our silly fights, you've never left me. 💕 <br> You’re the only one who understands me, the one I ever dreamt of, my precious madam ji. 🥰 <br> Every moment with you is pure magic. I wish I was there to hold you right now! ❤️";
-                message.style.display = "block"; // Show message and KEEP IT VISIBLE
+                clickBtn.style.display = "none";
+                message.innerHTML = 
+                    "You got me! 💖 <br> Baby, even if life gets tough, know that I’ll always be here. <br> " + 
+                    "You are my dream, my reality, and every heartbeat in between. <br> " +
+                    "**You are mine, forever and always.** 💋🔥";
+                message.style.display = "block";
             } else {
                 moveButton();
             }
@@ -144,4 +173,3 @@
 
 </body>
 </html>
-
